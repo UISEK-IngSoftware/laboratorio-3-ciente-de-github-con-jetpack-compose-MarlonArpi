@@ -16,25 +16,25 @@ fun RepoList () {
             .padding( 40.dp, 16.dp, 16.dp, 16.dp )
     ) {
         RepoItem(
-            "Repositorio en Android",
+            "Repositorio en Kotlin",
             "Este es un repositorio construido en Kotlin con Jetpack Compose",
             "Kotlin",
             "https://avatars.githubusercontent.com/u/215519037?v=4"
         )
         RepoItem(
-            "Repositorio en Android",
+            "Repositorio en Swift",
             "Este es un repositorio construido en Kotlin con Jetpack Compose",
             "Swift",
             "https://avatars.githubusercontent.com/u/215519037?v=4"
         )
         RepoItem(
-            "Repositorio en Android",
+            "Repositorio en Python",
             "Este es un repositorio construido en Kotlin con Jetpack Compose",
             "Python",
             "https://avatars.githubusercontent.com/u/215519037?v=4"
         )
         RepoItem(
-            "Repositorio en Android",
+            "Repositorio en React",
             "Este es un repositorio construido en Kotlin con Jetpack Compose",
             "React",
             "https://avatars.githubusercontent.com/u/215519037?v=4"
