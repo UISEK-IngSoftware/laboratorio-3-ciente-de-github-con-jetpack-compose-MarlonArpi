@@ -20,16 +20,15 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
+import ec.edu.uisek.githubclient.models.GithubUser
+import ec.edu.uisek.githubclient.models.Repository
 import ec.edu.uisek.githubclient.ui.theme.GithubClientTheme
 
 
 @Composable
 
 fun RepoItem (
-    repoName: String,
-    repoDescription: String?,
-    repoLanguage: String?,
-    repoImage: String
+    repository: Repository
 ) {
     Card (
         modifier = Modifier.padding( 16.dp).fillMaxWidth(),
@@ -42,30 +41,30 @@ fun RepoItem (
         ) {
 
             AsyncImage(
-                repoImage,
-                "Avatar de propietario",
+                repository.owner.avatarUrl,
+                repository.name,
                 modifier = Modifier.size(60.dp),
                 contentScale = ContentScale.Crop
             )
             Spacer(modifier = Modifier.width(16.dp))
             Column(modifier = Modifier.weight(1f)) {
                 Text(
-                    repoName,
+                    repository.name,
                     style = MaterialTheme.typography.titleMedium,
                     fontWeight = FontWeight.Bold
                 )
                 Spacer(modifier = Modifier.height(4.dp))
-                if (!repoDescription.isNullOrBlank()) {
+                if (!repository.description.isNullOrBlank()) {
                     Text(
-                        repoDescription,
+                        repository.description,
                         style = MaterialTheme.typography.bodyMedium,
                         maxLines = 3
                     )
                 }
                 Spacer(modifier = Modifier.height(4.dp))
-                if (!repoLanguage.isNullOrBlank()) {
+                if (!repository.language.isNullOrBlank()) {
                     Text(
-                        repoLanguage,
+                        repository.language,
                         style = MaterialTheme.typography.labelSmall,
                     )
                 }
@@ -80,11 +79,17 @@ fun RepoItem (
 
 fun RepotItemPreview () {
     GithubClientTheme {
-        RepoItem(
-            "Laboratorio 3",
-            "Jetpack Compose",
-             "Kotlin",
-             "https://avatars.githubusercontent.com/u/215519037?v=4"
+        val repository = Repository(
+            id = "1234",
+            name = "Laboratorio 3",
+            owner = GithubUser (
+                id = "0001",
+                login = "marlonarpi",
+                avatarUrl = "https://avatars.githubusercontent.com/u/215519037?v=4",
+            ),
+            description = "Jetpack Compose",
+            language = "Kotlin"
         )
+        RepoItem(repository)
     }
 }
